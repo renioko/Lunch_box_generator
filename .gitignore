@@ -2,7 +2,7 @@
 *.pyc
 __pycache__/
 myyvenv/
-
+myvenv
 env/
 .env
 
