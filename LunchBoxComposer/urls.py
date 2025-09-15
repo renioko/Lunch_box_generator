@@ -21,5 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lunch_box', include('lunch_box_app.urls')),
+    path('', include('lunch_box_app.urls')),
+    # path('', include('LunchBoxComposer.urls')),
+    # path('index', include('LunchBoxComposer.urls')),
 ]

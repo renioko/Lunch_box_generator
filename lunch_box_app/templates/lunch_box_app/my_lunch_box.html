@@ -1,0 +1,11 @@
+
+
+{% if allergies %}
+<h1>Allergies: </h1>
+<ul>
+    {% for allergy in allergies %}
+    <li>{{allergy}}</li>
+    {% endfor %}
+</ul>
+
+{% endif %}

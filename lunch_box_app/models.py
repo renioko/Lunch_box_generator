@@ -30,6 +30,8 @@ class UserProfile(models.Model):
         max_length=10,
         choices=GENDER_CHOICES,  
     )
+    # sex=models.TextChoices(value=GENDER_CHOICES
+    # )
     allergies = models.ManyToManyField('Allergy', blank=True)
     created_at = models.DateField(auto_now_add=True)
     profile_picture = models.ImageField(upload_to='images/profile_pics', blank=True)
@@ -38,7 +40,7 @@ class UserProfile(models.Model):
         return f'{self.user.username} Profile'
 
 class Allergy(models.Model):
-    name = models.CharField(max_length=15, default=None, choices=ALLERGY_CHOICES)
+    name = models.CharField(max_length=15, choices=ALLERGY_CHOICES)
     other_allergy = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):

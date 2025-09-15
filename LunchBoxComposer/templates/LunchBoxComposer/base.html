@@ -1,0 +1,44 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} Lunch Box Composer {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'LunchBoxComposer/static/lunch_box_app.css' %}">
+    {% block extra_head %} {% endblock %}
+</head>
+<body>
+<header>
+    {% if user.is_authenticated %}
+    <p> Welcome {{user.username}}!</p>
+
+
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <form action="{% url 'index' %}" method="get">
+        <button type="submit">Back to home page</button>
+    </form>
+</footer>
+</body>
+</html>
